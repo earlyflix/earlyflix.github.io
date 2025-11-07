@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EarlyFlix</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    body {
+      background-color: #141414;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #e50914;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #e50914;
+    }
+
+    .shows {
+      margin-bottom: 40px;
+    }
+
+    .show {
+      font-size: 1.5em;
+      margin: 10px 0;
+    }
+
+    button {
+      background-color: #e50914;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #f40612;
+      transform: scale(1.05);
+    }
+
+    #status {
+      margin-top: 30px;
+      font-size: 1.3em;
+      color: #aaa;
+    }
+
+    .granted {
+      color: #00ff88;
+      text-shadow: 0 0 8px #00ff88;
+      font-size: 1.5em;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>EarlyFlix</h1>
+
+  <div class="shows">
+    <div class="show">Stranger Things Season 5 — Earlyflix</div>
+    <div class="show">The Last of Us Season 2 — Earlyflix</div>
+    <div class="show">Dune: Prophecy - Earlyflix</div>
+  </div>
+
+  <button id="requestBtn">Click to Request Access</button>
+  <div id="status"></div>
+
+  <script>
+    const btn = document.getElementById('requestBtn');
+    const status = document.getElementById('status');
+
+    btn.addEventListener('click', () => {
+      btn.disabled = true;
+      btn.textContent = "Request Sent";
+      status.textContent = "Request sent – waiting for approval...";
+      
+      // After 10 minutes (600000 ms)
+      setTimeout(() => {
+        status.innerHTML = "<span class='granted'>✅ Access Granted! Welcome to EarlyFlix.</span>";
+      }, 600000); // 10 minutes
+    });
+  </script>
+</body>
+</html>
